@@ -28,8 +28,9 @@ const transition = {
 
 function BackgroundDynamic({
   context = 'page',
-}: Readonly<{ context: BackgroundContext }>) {
-  const color = usePageStore((state) => state.backgroundColor);
+  color: initialColor,
+}: Readonly<{ color: string; context: BackgroundContext }>) {
+  const color = usePageStore((state) => state.backgroundColor) || initialColor;
   const image = usePageStore((state) => state.backgroundImage);
 
   return (

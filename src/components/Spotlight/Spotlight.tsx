@@ -3,6 +3,7 @@
 import { type RefObject, useCallback } from 'react';
 
 import type { TvSeries } from '@/types/tv-series';
+import preloadImage from '@/utils/preloadImage';
 
 import SpotlightItem from './SpotlightItem';
 import Carousel from '../Carousel/Carousel';
@@ -26,14 +27,16 @@ export default function Spotlight({
   const handleChange = useCallback(
     (index: number) => {
       const item = items[index];
-      updateBackground({
-        backgroundImage: item.backdropImage as string,
-        backgroundColor: item.backdropColor,
+      const backgroundImage = item.backdropImage as string;
+      const backgroundColor = item.backdropColor;
+
+      preloadImage(backgroundImage).finally(() => {
+        updateBackground({
+          backgroundImage,
+          backgroundColor,
+        });
+        document.querySelector('main')!.style.backgroundColor = backgroundColor;
       });
-      const mainElement = document.querySelector('main');
-      if (mainElement) {
-        mainElement.style.backgroundColor = item.backdropColor;
-      }
     },
     [items, updateBackground],
   );

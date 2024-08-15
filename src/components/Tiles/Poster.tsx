@@ -20,7 +20,13 @@ function Poster({
   className,
   item,
   priority,
-}: Readonly<{ className?: string; item: TvSeries; priority?: boolean }>) {
+  replace,
+}: Readonly<{
+  className?: string;
+  item: TvSeries;
+  priority?: boolean;
+  replace?: boolean;
+}>) {
   return (
     <MotionLink
       key={item.id}
@@ -30,6 +36,7 @@ function Poster({
       whileHover={{ scale: 1.075 }}
       animate={{ scale: 1 }}
       layout
+      replace={replace}
     >
       <Image
         className="object-contain"

@@ -3,17 +3,29 @@
 @tailwind utilities;
 
 body.scrollbar-is-visible::-webkit-scrollbar-corner,
-body.scrollbar-is-visible::-webkit-scrollbar-track {
+body.scrollbar-is-visible::-webkit-scrollbar-track,
+body.scrollbar-is-visible ::-webkit-scrollbar-corner,
+body.scrollbar-is-visible ::-webkit-scrollbar-track {
   background: theme('colors.neutral.800');
 }
 
-body.scrollbar-is-visible::-webkit-scrollbar-thumb {
+body.scrollbar-is-visible::-webkit-scrollbar-thumb,
+body.scrollbar-is-visible ::-webkit-scrollbar-thumb {
   background: theme('colors.neutral.600');
   border-radius: 10px;
 }
 
-body.scrollbar-is-visible::-webkit-scrollbar {
-  width: auto;
+body.scrollbar-is-visible::-webkit-scrollbar,
+body.scrollbar-is-visible ::-webkit-scrollbar {
+  width: 10px;
   max-width: 10px;
   max-height: 10px;
+}
+
+body.modal-is-open {
+  overflow-y: hidden;
+}
+
+body.scrollbar-is-visible.modal-is-open {
+  margin-right: 10px;
 }

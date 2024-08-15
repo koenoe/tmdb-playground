@@ -1,8 +1,8 @@
 import { createStore } from 'zustand/vanilla';
 
 export type PageState = {
-  backgroundColor: string;
-  backgroundImage: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
 };
 
 export type PageActions = {
@@ -14,9 +14,8 @@ export type PageActions = {
 export type PageStore = PageState & PageActions;
 
 export const defaultInitState: PageState = {
-  backgroundColor: '#000',
-  backgroundImage:
-    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+  backgroundColor: undefined,
+  backgroundImage: undefined,
 };
 
 export const createPageStore = (initState: PageState = defaultInitState) => {

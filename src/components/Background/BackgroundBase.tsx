@@ -5,13 +5,13 @@ import hexToRgb from '@/utils/hexToRgb';
 import { type BackgroundContext } from './Background';
 import BackgroundImage from './BackgroundImage';
 
-export const backgroundBaseStyles = cva('absolute inset-0 z-0 transform-gpu');
+export const backgroundBaseStyles = cva('absolute inset-0');
 
 function BackgroundBase({
-  color,
+  color = '#000',
   context,
   image,
-}: Readonly<{ color: string; image?: string; context: BackgroundContext }>) {
+}: Readonly<{ color?: string; image?: string; context: BackgroundContext }>) {
   const rgbString = hexToRgb(color).join(',');
 
   return (

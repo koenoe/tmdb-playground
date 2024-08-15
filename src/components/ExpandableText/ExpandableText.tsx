@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { forwardRef, useCallback, useState } from 'react';
 
 import { cva } from 'class-variance-authority';
 
@@ -19,10 +19,10 @@ const textStyles = cva(
   },
 );
 
-export default function ExpandableText({
-  className,
-  children,
-}: Readonly<{ className?: string; children: React.ReactNode }>) {
+const ExpandableText = forwardRef<
+  HTMLParagraphElement,
+  Readonly<{ children: React.ReactNode; className?: string }>
+>(({ className, children }, ref) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = useCallback(
     () => setIsOpen((previousState) => !previousState),
@@ -31,10 +31,15 @@ export default function ExpandableText({
 
   return (
     <p
+      ref={ref}
       className={textStyles({ state: isOpen ? 'open' : 'closed', className })}
       onClick={handleClick}
     >
       {children}
     </p>
   );
-}
+});
+
+ExpandableText.displayName = 'ExpandableText';
+
+export default ExpandableText;

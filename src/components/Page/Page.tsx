@@ -26,7 +26,7 @@ export default function Page({
       <BackgroundGlobal />
       <main
         // pt-[] is the height of the header
-        className="grow pb-20 pt-[6rem] subpixel-antialiased transition-colors duration-500 md:pt-[8rem]"
+        className="grow pb-20 pt-[6rem] transition-colors duration-500 md:pt-[8rem]"
         style={{ backgroundColor }}
       >
         <Background

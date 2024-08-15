@@ -8,7 +8,8 @@ export default function BackgroundGlobal() {
   return (
     <style global jsx>{`
       main,
-      main + footer {
+      main + footer,
+      #modal-root > div {
         background-color: ${color};
       }
     `}</style>

@@ -31,14 +31,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body
         className={cx(
-          'flex min-h-screen select-none flex-col overscroll-y-none bg-neutral-800 text-white',
+          'flex min-h-screen select-none flex-col overflow-x-hidden overscroll-y-none bg-neutral-800 text-white subpixel-antialiased',
           inter.className,
         )}
       >
@@ -65,11 +67,13 @@ export default function RootLayout({
         />
         <Header />
         {children}
+        {modal}
         <Analytics />
         <SpeedInsights />
         <Suspense>
           <Footer />
         </Suspense>
+        <div id="modal-root" />
       </body>
     </html>
   );

@@ -20,7 +20,7 @@ function Background({
   return variant === 'static' ? (
     <BackgroundStatic context={context} color={color} image={image} />
   ) : (
-    <BackgroundDynamic context={context} />
+    <BackgroundDynamic context={context} color={color} />
   );
 }
 
